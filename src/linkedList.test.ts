@@ -58,6 +58,25 @@ describe('append method', () => {
   })
 })
 
-
+describe('prepend method', () => {
+  const spy = spyHelper('prepend')
+  it('should append the value correctly', () => {
+    numberList.prepend(1)
+    expect(numberList.head()?.value).toEqual(1)
+    stringList.prepend('test')
+    expect(stringList.head()?.value).toEqual('test')
+    mixedList.prepend(1)
+    expect(mixedList.head()?.value).toEqual(1)
+    mixedList.prepend('test')
+    expect(mixedList.head()?.value).toEqual('test')
+  })
+  it('should have been called once', () => {
+    expect(spy.number).toHaveBeenCalledOnce();
+    expect(spy.string).toHaveBeenCalledOnce();
+  })
+  it('should have been called twice', () => {
+    expect(spy.mixed).toHaveBeenCalledTimes(2);
+  })
+})
 
 
