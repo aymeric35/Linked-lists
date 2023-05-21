@@ -27,12 +27,18 @@ const mixedList = new LinkedList(
   ]
 );
 
-describe('append method', () => {
-  const spy = {
-    number: vi.spyOn(numberList, 'append'),
-    string: vi.spyOn(stringList, 'append'),
-    mixed: vi.spyOn(mixedList, 'append')
+const spyHelper = (
+  method: "append" | "prepend" | "size" | "head" | "tail" | "at" | "pop" | "contains" | "find" | "toString" | "insertAt" | "removeAt"
+  ) => {
+  return {
+    number: vi.spyOn(numberList, method),
+    string: vi.spyOn(stringList, method),
+    mixed: vi.spyOn(mixedList, method)
   }
+}
+
+describe('append method', () => {
+  const spy = spyHelper('append')
   it('should append the value correctly', () => {
     numberList.append(1)
     expect(numberList.tail()?.value).toEqual(1)
@@ -46,6 +52,8 @@ describe('append method', () => {
   it('should have been called once', () => {
     expect(spy.number).toHaveBeenCalledOnce();
     expect(spy.string).toHaveBeenCalledOnce();
+  })
+  it('should have been called twice', () => {
     expect(spy.mixed).toHaveBeenCalledTimes(2);
   })
 })
