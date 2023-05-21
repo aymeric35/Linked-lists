@@ -13,6 +13,14 @@ describe('tail method', () => {
   })
 })
 
+describe('head method', () => {
+  it('should return the head of the Linked List', () => {
+    expect(numberList.head()?.value).toEqual(84);
+    expect(stringList.head()?.value).toEqual('xajzo');
+    expect(mixedList.head()?.value).toEqual(84);
+  })
+})
+
 describe('append method', () => {
   it('should append the value correctly with a list composed of number values', () => {
     numberList.append(1)
