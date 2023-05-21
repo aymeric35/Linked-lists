@@ -1,7 +1,12 @@
 type NodeValue = string | number
 
-class LinkedList {
+export default class LinkedList {
   #head: LNode | null = null;
+  constructor(values?: NodeValue[]) {
+    if (values) {
+      values.forEach(v => this.append(v))
+    }
+  }
   append(value: NodeValue) {
     if (this.#head !== null) {
       let node = new LNode(value);
