@@ -7,7 +7,7 @@ export default class LinkedList {
       values.forEach(v => this.append(v))
     }
   }
-  append(value: NodeValue) {
+  append(value: NodeValue): void {
     if (this.#head !== null) {
       let node = new LNode(value);
       let tail = this.tail();
@@ -17,7 +17,7 @@ export default class LinkedList {
     }
   }
 
-  prepend(value: NodeValue) {
+  prepend(value: NodeValue): void {
     if (this.#head !== null) {
       let node = new LNode(value)
       node.nextNode = this.#head

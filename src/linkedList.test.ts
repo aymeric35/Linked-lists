@@ -1,5 +1,5 @@
 import LinkedList from './linkedList'
-import { describe, it, expect, spyOn, vi } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 
 const numberList = new LinkedList(
   [
@@ -11,9 +11,9 @@ const numberList = new LinkedList(
 const stringList = new LinkedList(
   [
     'xajzo', 'dqzbtlox', 'vjod', 'uvvmxrrtcq', 'abyowrzgytv', 'rwzmnqj',
-     'qgi', 'hjdg', 'pchfkrcd', 'nften', 'szait', 'vkf', 'mcliwkjr',
-     'fuiajmmskkkb', 'vsrkflbx', 'evqhquzsvaca', 'gwnqwyv', 'aqnuymc',
-     'xygiusmn', 'bsrwzuwd'
+    'qgi', 'hjdg', 'pchfkrcd', 'nften', 'szait', 'vkf', 'mcliwkjr',
+    'fuiajmmskkkb', 'vsrkflbx', 'evqhquzsvaca', 'gwnqwyv', 'aqnuymc',
+    'xygiusmn', 'bsrwzuwd'
   ]
 );
 const mixedList = new LinkedList(
@@ -27,15 +27,26 @@ const mixedList = new LinkedList(
   ]
 );
 
-describe('append method on numberList', () => {
-  const spy = vi.spyOn(numberList, 'append')
+describe('append method', () => {
+  const spy = {
+    number: vi.spyOn(numberList, 'append'),
+    string: vi.spyOn(stringList, 'append'),
+    mixed: vi.spyOn(mixedList, 'append')
+  }
   it('should append the value correctly', () => {
     numberList.append(1)
-    const numberListString = numberList.toString();
-    expect(numberListString?.charAt(numberListString.length - 11)).toEqual('1')
+    expect(numberList.tail()?.value).toEqual(1)
+    stringList.append('test')
+    expect(stringList.tail()?.value).toEqual('test')
+    mixedList.append(1)
+    expect(mixedList.tail()?.value).toEqual(1)
+    mixedList.append('test')
+    expect(mixedList.tail()?.value).toEqual('test')
   })
   it('should have been called once', () => {
-    expect(spy).toHaveBeenCalledOnce();
+    expect(spy.number).toHaveBeenCalledOnce();
+    expect(spy.string).toHaveBeenCalledOnce();
+    expect(spy.mixed).toHaveBeenCalledTimes(2);
   })
 })
 
