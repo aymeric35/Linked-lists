@@ -5,6 +5,14 @@ const numberList = new LinkedList([84, 15, 54, 25, 60, 64, 47, 2]);
 const stringList = new LinkedList(['xajzo', 'dqzbtlox', 'vjod', 'uvvmxrrtcq', 'abyowrzgytv', 'rwzmnqj', 'qgi', 'hjdg']);
 const mixedList = new LinkedList([84, 15, 'dqzbtlox', 'vjod', 60, 'uvvmxrrtcq', 47, 'vkf']);
 
+describe('tail method', () => {
+  it('should return the tail of the Linked List', () => {
+    expect(numberList.tail()?.value).toEqual(2);
+    expect(stringList.tail()?.value).toEqual('hjdg');
+    expect(mixedList.tail()?.value).toEqual('vkf');
+  })
+})
+
 describe('append method', () => {
   it('should append the value correctly with a list composed of number values', () => {
     numberList.append(1)
