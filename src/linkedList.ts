@@ -167,27 +167,6 @@ class LNode {
   }
 }
 
-const linkedList = new LinkedList();
-
-
-linkedList.append(1);
-linkedList.append(2);
-linkedList.append(47);
-linkedList.append(4);
-linkedList.prepend(10);
-console.log(linkedList.tail(), 'tail');
-console.log(linkedList.head());
-console.log(linkedList.size());
-console.log(linkedList.at(3));
-linkedList.pop();
-console.log(linkedList.tail(), 'tail');
-console.log(linkedList.contains(3));
-console.log(linkedList.find(47));
-linkedList.insertAt('1000', 3)
-console.log(linkedList.toString());
-linkedList.removeAt(0);
-console.log(linkedList.toString());
-
 
 
 
