@@ -171,3 +171,34 @@ describe('toString method', () => {
     expect(emptyNode.toString()).toBeUndefined();
   })
 })
+
+describe('insertAt method', () => {
+  it('should insert correctly at the head of the nodes', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    numberList.insertAt(100, 0)
+    expect(numberList.head()?.value).toEqual(100)
+    stringList.insertAt('hello', 0)
+    expect(stringList.head()?.value).toEqual('hello')
+    mixedList.insertAt(50, 0)
+    expect(mixedList.head()?.value).toEqual(50)
+  })
+  it('should insert correctly at the tail of the nodes', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    const tailIndex = (l: LinkedList) => l.size()    
+    numberList.insertAt(100, tailIndex(numberList))
+    expect(numberList.tail()?.value).toEqual(100)
+    stringList.insertAt('hello', tailIndex(stringList))
+    expect(stringList.tail()?.value).toEqual('hello')
+    mixedList.insertAt(50, tailIndex(mixedList))
+    expect(mixedList.tail()?.value).toEqual(50)
+  })
+  it('should append the value when the index is superior to the size of the nodes', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    numberList.insertAt(100, 100)
+    expect(numberList.tail()?.value).toEqual(100)
+    stringList.insertAt('hello', 100)
+    expect(stringList.tail()?.value).toEqual('hello')
+    mixedList.insertAt(50, 100)
+    expect(mixedList.tail()?.value).toEqual(50)
+  })
+})
