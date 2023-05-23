@@ -132,4 +132,16 @@ describe('pop method', () => {
   })
 })
 
+describe('contains method', () => {
+  it('should return whether the value exists in the nodes', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    expect(numberList.contains(25)).toBeTruthy();
+    expect(stringList.contains('dqzbtlox')).toBeTruthy();
+    expect(mixedList.contains(15)).toBeTruthy();
+    expect(numberList.contains(0)).toBeFalsy();
+    expect(stringList.contains('qfwf')).toBeFalsy();
+    expect(mixedList.contains('ef')).toBeFalsy();
+  })
+})
+
 
