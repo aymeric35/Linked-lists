@@ -77,4 +77,19 @@ describe('size method', () => {
   })
 })
 
+describe('at method', () => {
+  it('should return the correct node at index 0', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    expect(numberList.at(0)).toBe(numberList.head())
+    expect(stringList.at(0)).toBe(stringList.head())
+    expect(mixedList.at(0)).toBe(mixedList.head())
+  })
+  it('should return the correct node at the last index', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    expect(numberList.at(numberList.size() - 1)).toBe(numberList.tail())
+    expect(stringList.at(stringList.size() - 1)).toBe(stringList.tail())
+    expect(mixedList.at(mixedList.size() - 1)).toBe(mixedList.tail())
+  })
+})
+
 
