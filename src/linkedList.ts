@@ -113,7 +113,7 @@ export default class LinkedList {
     if (this.#head === null || index === 0) {
       return this.prepend(value)
     }
-    if (this.size() === index) {
+    if (index >= this.size()) {
       return this.append(value)
     }
     let currentNode = this.#head;
