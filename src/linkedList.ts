@@ -113,15 +113,15 @@ export default class LinkedList {
     if (this.#head === null || index === 0) {
       return this.prepend(value)
     }
+    if (this.size() === index) {
+      return this.append(value)
+    }
     let currentNode = this.#head;
     let previousNode: LNode | null = null;
     const insertValue = (n: LNode | null, j: number = 0): LNode | undefined => {
       if (!n) return;
       if (j === index && previousNode) {
         const insertedNode = new LNode(value)
-        if (currentNode.nextNode === null) {
-          return currentNode.nextNode = insertedNode;
-        }
         previousNode.nextNode = insertedNode;
         return insertedNode.nextNode = currentNode;
       };
