@@ -110,4 +110,26 @@ describe('at method', () => {
   })
 })
 
+describe('pop method', () => {
+  it('should remove the last node', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    numberList.pop()
+    expect(numberList.tail()?.value).toEqual(47)
+    stringList.pop()
+    expect(stringList.tail()?.value).toEqual('dqzbtlox')
+    mixedList.pop()
+    expect(mixedList.tail()?.value).toEqual('dqzbtlox')
+  })
+  it('should return undefined if no nodes exist when calling head or tail methods', () => {
+    const emptyNode = new LinkedList()
+    emptyNode.pop()
+    expect(emptyNode.tail()).toBeUndefined()
+    expect(emptyNode.head()).toBeUndefined()
+  })
+  it('should return undefined after being called', () => {
+    const emptyNode = new LinkedList()
+    expect(emptyNode.pop()).toBeUndefined;
+  })
+})
+
 
