@@ -90,6 +90,24 @@ describe('at method', () => {
     expect(stringList.at(stringList.size() - 1)).toBe(stringList.tail())
     expect(mixedList.at(mixedList.size() - 1)).toBe(mixedList.tail())
   })
+  it('should be a string or a number at the desired index or undefined if the index does not exist', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    const getRandomInt = () => {
+      const min = Math.ceil(0)
+      const max = Math.floor(10)
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const randomInt = getRandomInt();
+    expect(
+      numberList.at(randomInt)?.value === undefined || Number.isFinite(numberList.at(randomInt)?.value)
+    ).toBeTruthy()
+    expect(
+      stringList.at(randomInt)?.value === undefined || typeof stringList.at(randomInt)?.value === 'string'
+    ).toBeTruthy()
+    expect(
+      mixedList.at(randomInt)?.value === undefined || typeof mixedList.at(randomInt)?.value === 'string' || Number.isFinite(mixedList.at(randomInt)?.value)
+    ).toBeTruthy()
+  })
 })
 
 
