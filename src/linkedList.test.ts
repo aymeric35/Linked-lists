@@ -158,3 +158,16 @@ describe('find method', () => {
     expect(mixedList.find(100)).toBeUndefined();
   })
 })
+
+describe('toString method', () => {
+  it('should return the correct template', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    expect(numberList.toString()).toEqual('( 84 ) -> ( 15 ) -> ( 54 ) -> ( 25 ) -> ( 60 ) -> ( 64 ) -> ( 47 ) -> ( 2 ) -> null')
+    expect(stringList.toString()).toEqual('( xajzo ) -> ( dqzbtlox ) -> ( vjod ) -> null')
+    expect(mixedList.toString()).toEqual('( 84 ) -> ( 15 ) -> ( dqzbtlox ) -> ( vkf ) -> null')
+  })
+  it('should return undefined with an empty node', () => {
+    const emptyNode = new LinkedList()
+    expect(emptyNode.toString()).toBeUndefined();
+  })
+})
