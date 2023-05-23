@@ -144,4 +144,17 @@ describe('contains method', () => {
   })
 })
 
-
+describe('find method', () => {
+  it('should return the correct index', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    expect(numberList.find(84)).toEqual(0);
+    expect(stringList.find('vjod')).toEqual(2);
+    expect(mixedList.find('vkf')).toEqual(3);
+  })
+  it('should return undefined if the value does not exist', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    expect(numberList.find(100)).toBeUndefined();
+    expect(stringList.find(100)).toBeUndefined();
+    expect(mixedList.find(100)).toBeUndefined();
+  })
+})
