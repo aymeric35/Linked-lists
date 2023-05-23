@@ -202,3 +202,24 @@ describe('insertAt method', () => {
     expect(mixedList.tail()?.value).toEqual(50)
   })
 })
+
+describe('removeAt method', () => {
+  it('should remove correctly at index 0', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    numberList.removeAt(0)
+    expect(numberList.head()?.value).toEqual(15)
+    stringList.removeAt(0)
+    expect(stringList.head()?.value).toEqual('dqzbtlox')
+    mixedList.removeAt(0)
+    expect(mixedList.head()?.value).toEqual(15)
+  })
+  it('should remove correctly at last index', () => {
+    const { numberList, stringList, mixedList } = initLists();
+    numberList.removeAt(numberList.size() - 1)
+    expect(numberList.tail()?.value).toEqual(47)
+    stringList.removeAt(stringList.size() - 1)
+    expect(stringList.tail()?.value).toEqual('dqzbtlox')
+    mixedList.removeAt(mixedList.size() - 1)
+    expect(mixedList.tail()?.value).toEqual('dqzbtlox')    
+  })
+})
