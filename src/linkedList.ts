@@ -134,6 +134,7 @@ export default class LinkedList {
 
   removeAt(index: number) {
     if (this.#head === null) return;
+    if (index >= this.size()) return;    
     if (index === 0) {
       if (this.#head.nextNode === null) {
         return this.#head = null;
